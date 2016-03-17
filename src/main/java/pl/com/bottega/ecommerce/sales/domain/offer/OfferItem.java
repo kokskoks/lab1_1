@@ -30,19 +30,15 @@ public class OfferItem {
 	
 	private boolean available;
 
-	public OfferItem(String productId, BigDecimal productPrice, String productName,
-			Date productSnapshotDate, String productType, int quantity) {
-		this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null, true);
+	public OfferItem(Product product, int quantity) {
+		this(product, quantity, null, null, true);
 	}
 
-	public OfferItem(String productId, BigDecimal productPrice, String productName,
-			Date productSnapshotDate, String productType, int quantity,
+	public OfferItem(Product product, int quantity,
 			BigDecimal discount, String discountCause, boolean available) {
-		this.product.setProductId(productId);
-		this.product.setProductPrice(productPrice);
-		this.product.setProductName(productName);
-		this.product.setProductSnapshotDate(productSnapshotDate);
-		this.product.setProductType(productType);
+		
+		
+		this.product = product;
 
 		this.quantity = quantity;
 		this.discount.setDiscount(discount);
@@ -52,7 +48,7 @@ public class OfferItem {
 		if (discount != null)
 			discountValue = discountValue.subtract(discount);
 
-		this.money.setTotalCost(productPrice
+		this.money.setTotalCost(this.product.getProductPrice()
 				.multiply(new BigDecimal(quantity)).subtract(discountValue));
 		
 		this.available = available;
