@@ -140,13 +140,6 @@ public class OfferItem implements ValueComparator<OfferItem>{
 		return true;
 	}
 
-	/**
-	 * 
-	 * @param item
-	 * @param delta
-	 *            acceptable percentage difference
-	 * @return
-	 */
 	public boolean sameAs(OfferItem other, double delta) {
 		if (product.getProductName() == null) {
 			if (other.product.getProductName() != null)
