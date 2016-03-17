@@ -29,15 +29,17 @@ public class OfferItem {
 	private String currency;
 
 	private Discount discount;
+	
+	private boolean available;
 
 	public OfferItem(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity) {
-		this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null);
+		this(productId, productPrice, productName, productSnapshotDate, productType, quantity, null, null, true);
 	}
 
 	public OfferItem(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity,
-			BigDecimal discount, String discountCause) {
+			BigDecimal discount, String discountCause, boolean available) {
 		this.product.setProductId(productId);
 		this.product.setProductPrice(productPrice);
 		this.product.setProductName(productName);
@@ -54,6 +56,8 @@ public class OfferItem {
 
 		this.totalCost = productPrice
 				.multiply(new BigDecimal(quantity)).subtract(discountValue);
+		
+		this.available = available;
 	}
 
 	public String getProductId() {
@@ -94,6 +98,10 @@ public class OfferItem {
 
 	public int getQuantity() {
 		return quantity;
+	}
+	
+	public boolean isAvailable(){
+		return available;
 	}
 
 	@Override
