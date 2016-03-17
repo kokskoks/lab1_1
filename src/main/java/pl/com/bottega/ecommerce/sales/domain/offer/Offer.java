@@ -47,13 +47,8 @@ public class Offer implements ValueComparator<Offer>{
 			return false;
 		return true;
 	}
+	
 
-	/**
-	 * 
-	 * @param seenOffer
-	 * @param delta acceptable difference in percent
-	 * @return
-	 */
 	public boolean sameAs(Offer seenOffer, double delta) {
 		if (! (availabeItems.size() == seenOffer.availabeItems.size()))
 			return false;

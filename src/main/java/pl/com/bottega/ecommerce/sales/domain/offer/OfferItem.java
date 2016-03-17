@@ -18,7 +18,7 @@ package pl.com.bottega.ecommerce.sales.domain.offer;
 import java.math.BigDecimal;
 import java.util.Date;
 
-public class OfferItem {
+public class OfferItem implements ValueComparator<OfferItem>{
 
 	private Product product;
 
