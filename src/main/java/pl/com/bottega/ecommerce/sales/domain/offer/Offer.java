@@ -10,7 +10,6 @@ public class Offer implements ValueComparator<Offer>{
 	
 	
 	public Offer(List<OfferItem> items) {
-		
 		for(OfferItem offerItem : items){
 			if(offerItem.isAvailable()){
 				this.availabeItems.add(offerItem);
@@ -61,10 +60,10 @@ public class Offer implements ValueComparator<Offer>{
 			return false;
 		
 		for (OfferItem item : availabeItems) {
-			OfferItem sameItem = seenOffer.findItem(item.getProductId());
-			if (sameItem == null)
+			OfferItem otherItem = seenOffer.findItem(item.getProductId());
+			if (otherItem == null)
 				return false;
-			if (!sameItem.sameAs(item, delta))
+			if (!otherItem.sameAs(item, delta))
 				return false;
 		}
 		
