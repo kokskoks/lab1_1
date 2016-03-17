@@ -8,19 +8,37 @@ public class Product {
 	private Money money;
 	private String productName;
 	private Date productSnapshotDate;
-	private String productType;
+	private ProductType type;
 
 	
 	
 
-	public Product(String productId, Money money, String productName, Date productSnapshotDate, String productType) {
+	public Product(String productId, Money money, String productName, Date productSnapshotDate, ProductType type) {
 		super();
 		this.productId = productId;
 		this.money = money;
 		this.productName = productName;
 		this.productSnapshotDate = productSnapshotDate;
-		this.productType = productType;
+		this.type = type;
 	}
+	
+	
+
+
+
+	public ProductType getProductType() {
+		return type;
+	}
+
+
+
+
+
+	public void setProductType(ProductType type) {
+		this.type = type;
+	}
+
+
 
 
 
@@ -61,11 +79,5 @@ public class Product {
 		this.productSnapshotDate = productSnapshotDate;
 	}
 
-	public String getProductType() {
-		return productType;
-	}
 
-	public void setProductType(String productType) {
-		this.productType = productType;
-	}
 }

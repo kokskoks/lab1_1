@@ -69,7 +69,7 @@ public class OfferItem {
 		return product.getProductSnapshotDate();
 	}
 	
-	public String getProductType() {
+	public ProductType getProductType() {
 		return product.getProductType();
 	}
 
