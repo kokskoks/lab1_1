@@ -9,9 +9,16 @@ public class Offer implements ValueComparator<Offer>{
 	private List<OfferItem> unavailableItems = new ArrayList<OfferItem>();
 	
 	
-	public Offer(List<OfferItem> availabeItems, List<OfferItem> unavailableItems) {
-		this.availabeItems = availabeItems;
-		this.unavailableItems = unavailableItems;
+	public Offer(List<OfferItem> items) {
+		
+		for(OfferItem offerItem : items){
+			if(offerItem.isAvailable()){
+				this.availabeItems.add(offerItem);
+			} else {
+				this.unavailableItems.add(offerItem);
+			}
+
+		}
 	}
 
 	public List<OfferItem> getAvailabeItems() {
