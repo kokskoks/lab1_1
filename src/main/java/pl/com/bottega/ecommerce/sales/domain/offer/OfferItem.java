@@ -37,10 +37,7 @@ public class OfferItem {
 
 	private String currency;
 
-	// discount
-	private String discountCause;
-
-	private BigDecimal discount;
+	private Discount discount = new Discount();
 
 	public OfferItem(String productId, BigDecimal productPrice, String productName,
 			Date productSnapshotDate, String productType, int quantity) {
@@ -57,8 +54,8 @@ public class OfferItem {
 		this.productType = productType;
 
 		this.quantity = quantity;
-		this.discount = discount;
-		this.discountCause = discountCause;
+		this.discount.setDiscount(discount);
+		this.discount.setDiscountCause(discountCause);
 
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null)
@@ -97,11 +94,11 @@ public class OfferItem {
 	}
 
 	public BigDecimal getDiscount() {
-		return discount;
+		return discount.getDiscount();
 	}
 
 	public String getDiscountCause() {
-		return discountCause;
+		return discount.getDiscountCause();
 	}
 
 	public int getQuantity() {
@@ -113,7 +110,7 @@ public class OfferItem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((discount == null) ? 0 : discount.hashCode());
+				+ ((discount.getDiscount() == null) ? 0 : discount.getDiscount().hashCode());
 		result = prime * result + ((productName == null) ? 0 : productName.hashCode());
 		result = prime * result + ((productPrice == null) ? 0 : productPrice.hashCode());
 		result = prime * result
@@ -134,10 +131,10 @@ public class OfferItem {
 		if (getClass() != obj.getClass())
 			return false;
 		OfferItem other = (OfferItem) obj;
-		if (discount == null) {
-			if (other.discount != null)
+		if (discount.getDiscount() == null) {
+			if (other.discount.getDiscount() != null)
 				return false;
-		} else if (!discount.equals(other.discount))
+		} else if (!discount.getDiscount().equals(other.discount.getDiscount()))
 			return false;
 		if (productName == null) {
 			if (other.productName != null)
