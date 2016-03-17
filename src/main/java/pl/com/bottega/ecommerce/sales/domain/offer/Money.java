@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Money {
 	private BigDecimal value;
-	private String currency;
+	private Currency currency;
 
 	public Money() {
 	}
@@ -17,11 +17,11 @@ public class Money {
 		this.value = value;
 	}
 
-	public String getCurrency() {
+	public Currency getCurrency() {
 		return currency;
 	}
 
-	public void setCurrency(String currency) {
+	public void setCurrency(Currency currency) {
 		this.currency = currency;
 	}
 }

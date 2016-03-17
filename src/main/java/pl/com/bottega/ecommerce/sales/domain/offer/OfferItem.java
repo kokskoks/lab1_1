@@ -77,7 +77,7 @@ public class OfferItem {
 		return money.getValue();
 	}
 
-	public String getTotalCostCurrency() {
+	public Currency getTotalCostCurrency() {
 		return money.getCurrency();
 	}
 
