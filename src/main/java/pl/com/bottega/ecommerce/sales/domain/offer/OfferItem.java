@@ -31,22 +31,21 @@ public class OfferItem {
 	private boolean available;
 
 	public OfferItem(Product product, int quantity) {
-		this(product, quantity, null, null, true);
+		this(product, quantity, null, true);
 	}
 
 	public OfferItem(Product product, int quantity,
-			BigDecimal discount, String discountCause, boolean available) {
+			Discount discount, boolean available) {
 		
 		
 		this.product = product;
 
 		this.quantity = quantity;
-		this.discount.setDiscount(discount);
-		this.discount.setDiscountCause(discountCause);
+		this.discount = discount;
 
 		BigDecimal discountValue = new BigDecimal(0);
 		if (discount != null)
-			discountValue = discountValue.subtract(discount);
+			discountValue = discountValue.subtract(discount.getMoney().getTotalCost());
 
 		this.money.setTotalCost(this.product.getProductPrice()
 				.multiply(new BigDecimal(quantity)).subtract(discountValue));
@@ -82,9 +81,7 @@ public class OfferItem {
 		return money.getCurrency();
 	}
 
-	public BigDecimal getDiscount() {
-		return discount.getDiscount();
-	}
+	
 
 	public String getDiscountCause() {
 		return discount.getDiscountCause();
@@ -103,7 +100,7 @@ public class OfferItem {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
-				+ ((discount.getDiscount() == null) ? 0 : discount.getDiscount().hashCode());
+				+ ((discount == null) ? 0 : discount.hashCode());
 		result = prime * result + ((product.getProductName() == null) ? 0 : product.getProductName().hashCode());
 		result = prime * result + ((product.getProductPrice() == null) ? 0 : product.getProductPrice().hashCode());
 		result = prime * result
@@ -124,10 +121,10 @@ public class OfferItem {
 		if (getClass() != obj.getClass())
 			return false;
 		OfferItem other = (OfferItem) obj;
-		if (discount.getDiscount() == null) {
-			if (other.discount.getDiscount() != null)
+		if (discount == null) {
+			if (other.discount != null)
 				return false;
-		} else if (!discount.getDiscount().equals(other.discount.getDiscount()))
+		} else if (!discount.equals(other.discount))
 			return false;
 		if (product.getProductName() == null) {
 			if (other.product.getProductName() != null)
