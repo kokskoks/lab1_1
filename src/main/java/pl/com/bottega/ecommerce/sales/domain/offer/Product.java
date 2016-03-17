@@ -33,7 +33,7 @@ public class Product {
 	}
 
 	public BigDecimal getProductPrice() {
-		return money.getTotalCost();
+		return money.getValue();
 	}
 
 	public Money getMoney() {
